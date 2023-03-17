@@ -32,6 +32,11 @@ pipeline {
                 }
             }
         }
+        stage('git clone socks app') {
+            steps {
+                git branch: 'master', url: 'https://github.com/Steveric1/microservices-demo.git'
+            }
+        }
         stage('Socks App Deployment'){
             steps {
                 dir('deploy/kubernetes') {
