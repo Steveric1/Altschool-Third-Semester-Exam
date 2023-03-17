@@ -1,0 +1,16 @@
+variable "vpc_cidr" { type = string }
+variable "vpc_name" { type = string }
+variable "public1" { type = string }
+variable "public2" { type = string }
+variable "public3" { type = string }
+variable "private1" { type = string }
+variable "private2" { type = string }
+variable "private3" { type = string }
+variable "public-1A_cidr" { type = string }
+variable "public-1B_cidr" { type = string }
+variable "public-1C_cidr" { type = string }
+variable "private-1A_cidr" { type = string }
+variable "private-1B_cidr" { type = string }
+variable "private-1C_cidr" { type = string }
+variable "route" { type = string }
+variable "gate_way" { type = string }
