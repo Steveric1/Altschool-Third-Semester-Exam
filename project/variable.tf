@@ -134,12 +134,12 @@ variable "key_name" { type = string }
 variable "key_pairs" { type = string }
 
 //instance variable declaration for worker node
-variable "worker_ami" { type = string }
-variable "worker_instance_type" { type = string }
-variable "worker_key_name" { type = string }
+# variable "worker_ami" { type = string }
+# variable "worker_instance_type" { type = string }
+# variable "worker_key_name" { type = string }
 
 //instance variable declaration for worker node
-variable "worker2_ami" { type = string }
-variable "worker2_instance_type" { type = string }
-variable "worker2_key_name" { type = string }
-
+# variable "worker2_ami" { type = string }
+# variable "worker2_instance_type" { type = string }
+# variable "worker2_key_name" { type = string }
+# 
