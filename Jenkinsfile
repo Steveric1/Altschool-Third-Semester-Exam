@@ -62,14 +62,14 @@ pipeline {
                         script {
                             try {
                                 sh "ssh ec2-user@54.210.230.177 kubectl create -f 00-monitoring-ns.yaml"
-                                sh "ssh ec2-user@54.210.230.177 kubectl create $(ls *-prometheus-*.yaml | awk ' { print " -f " $1 } ')"
-                                sh "ssh ec2-user@54.210.230.177 kubectl create $(ls *-grafana-*.yaml | awk ' { print " -f " $1 }'  | grep -v grafana-import)"
-                                sh "ssh ec2-user@54.210.230.177 kubectl create -f 23-grafana-import-dash-batch.yaml"
+                                // sh "ssh ec2-user@54.210.230.177 kubectl create $(ls *-prometheus-*.yaml | awk ' { print " -f " $1 } ')"
+                                // sh "ssh ec2-user@54.210.230.177 kubectl create $(ls *-grafana-*.yaml | awk ' { print " -f " $1 }'  | grep -v grafana-import)"
+                                // sh "ssh ec2-user@54.210.230.177 kubectl create -f 23-grafana-import-dash-batch.yaml"
                             } catch(error) {
                                 sh "ssh ec2-user@54.210.230.177 kubectl apply -f 00-monitoring-ns.yaml"
-                                sh "ssh ec2-user@54.210.230.177 kubectl apply $(ls *-prometheus-*.yaml | awk ' { print " -f " $1 } ')"
-                                sh "ssh ec2-user@54.210.230.177 kubectl apply $(ls *-grafana-*.yaml | awk ' { print " -f " $1 }'  | grep -v grafana-import)"
-                                sh "ssh ec2-user@54.210.230.177 kubectl apply -f 23-grafana-import-dash-batch.yaml"
+                                // sh "ssh ec2-user@54.210.230.177 kubectl apply $(ls *-prometheus-*.yaml | awk ' { print " -f " $1 } ')"
+                                // sh "ssh ec2-user@54.210.230.177 kubectl apply $(ls *-grafana-*.yaml | awk ' { print " -f " $1 }'  | grep -v grafana-import)"
+                                // sh "ssh ec2-user@54.210.230.177 kubectl apply -f 23-grafana-import-dash-batch.yaml"
                             }
                         }
                     }
