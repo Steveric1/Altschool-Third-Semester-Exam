@@ -71,6 +71,14 @@ variable "web_ingress" {
       protocol    = "tcp"
       cidr_blocks = ["0.0.0.0/0"]
     }
+
+    8472 - 8472 = {
+      description = "flannel"
+      fromPort        = 8472
+      toPort = 8472
+      protocol    = "udp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
   }
 }
 

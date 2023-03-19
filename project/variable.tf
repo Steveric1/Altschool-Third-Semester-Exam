@@ -2,7 +2,7 @@
 variable "vpc_cidr" { type = string }
 variable "vpc_name" {
   type    = string
-  default = "prod"
+  default = "production"
 }
 
 variable "public-1A_cidr" { type = string }
@@ -14,35 +14,35 @@ variable "private-1C_cidr" { type = string }
 
 variable "public1" {
   type    = string
-  default = "prod"
+  default = "production"
 }
 variable "public2" {
   type    = string
-  default = "prod"
+  default = "production"
 }
 variable "public3" {
   type    = string
-  default = "prod"
+  default = "production"
 }
 variable "private1" {
   type    = string
-  default = "prod"
+  default = "production"
 }
 variable "private2" {
   type    = string
-  default = "prod"
+  default = "production"
 }
 variable "private3" {
   type    = string
-  default = "prod"
+  default = "production"
 }
 variable "route" {
   type    = string
-  default = "prod"
+  default = "production"
 }
 variable "gate_way" {
   type    = string
-  default = "prod"
+  default = "production"
 }
 
 //security group variable declaration
@@ -119,6 +119,14 @@ variable "web_ingress" {
       protocol    = "tcp"
       cidr_blocks = ["0.0.0.0/0"]
     }
+
+    8472 - 8472 = {
+      description = "flannel"
+      fromPort    = 8472
+      toPort      = 8472
+      protocol    = "udp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
   }
 }
 
@@ -134,12 +142,12 @@ variable "key_name" { type = string }
 variable "key_pairs" { type = string }
 
 //instance variable declaration for worker node
-# variable "worker_ami" { type = string }
-# variable "worker_instance_type" { type = string }
-# variable "worker_key_name" { type = string }
+variable "worker_ami" { type = string }
+variable "worker_instance_type" { type = string }
+variable "worker_key_name" { type = string }
 
 //instance variable declaration for worker node
-# variable "worker2_ami" { type = string }
-# variable "worker2_instance_type" { type = string }
-# variable "worker2_key_name" { type = string }
-# 
+variable "worker2_ami" { type = string }
+variable "worker2_instance_type" { type = string }
+variable "worker2_key_name" { type = string }
+

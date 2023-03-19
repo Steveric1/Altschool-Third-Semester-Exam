@@ -42,7 +42,7 @@ resource "aws_instance" "master" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo apt update -y"
+      "sudo yum update -y"
     ]
   }
 
@@ -59,67 +59,67 @@ resource "aws_instance" "master" {
 }
 
 //provision an instance in public subnet for worker
-# resource "aws_instance" "worker" {
-#   ami                         = var.worker_ami
-#   instance_type               = var.worker_instance_type
-#   availability_zone           = "us-east-1b"
-#   key_name                    = var.worker_key_name
-#   subnet_id                   = module.vpc.public-1B
-#   associate_public_ip_address = true
-#   vpc_security_group_ids      = [module.security.security_group_id]
-# 
-#   provisioner "local-exec" {
-#     command = "echo ${aws_instance.worker.public_ip} >> inventory"
-#   }
-# 
-#   provisioner "remote-exec" {
-#     inline = [
-#       "sudo yum update -y"
-#     ]
-#   }
-# 
-#   connection {
-#     type        = "ssh"
-#     user        = "ec2-user"
-#     host        = aws_instance.worker.public_ip
-#     private_key = file(var.key_pairs)
-#   }
-# 
-#   tags = {
-#     Name = "${terraform.workspace}-worker"
-#   }
-# }
+resource "aws_instance" "worker" {
+  ami                         = var.worker_ami
+  instance_type               = var.worker_instance_type
+  availability_zone           = "us-east-1b"
+  key_name                    = var.worker_key_name
+  subnet_id                   = module.vpc.public-1B
+  associate_public_ip_address = true
+  vpc_security_group_ids      = [module.security.security_group_id]
 
-# resource "aws_instance" "worker2" {
-#   ami                         = var.worker2_ami
-#   instance_type               = var.worker2_instance_type
-#   availability_zone           = "us-east-1c"
-#   key_name                    = var.worker2_key_name
-#   subnet_id                   = module.vpc.public-1C
-#   associate_public_ip_address = true
-#   vpc_security_group_ids      = [module.security.security_group_id]
-# 
-#   provisioner "local-exec" {
-#     command = "echo ${aws_instance.worker2.public_ip} >> inventory"
-#   }
-# 
-#   provisioner "remote-exec" {
-#     inline = [
-#       "sudo yum update -y"
-#     ]
-#   }
-# 
-#   connection {
-#     type        = "ssh"
-#     user        = "ec2-user"
-#     host        = aws_instance.worker2.public_ip
-#     private_key = file(var.key_pairs)
-#   }
-# 
-#   tags = {
-#     Name = "${terraform.workspace}-worker2"
-#   }
-# }
+  provisioner "local-exec" {
+    command = "echo ${aws_instance.worker.public_ip} >> inventory"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo yum update -y"
+    ]
+  }
+
+  connection {
+    type        = "ssh"
+    user        = "ec2-user"
+    host        = aws_instance.worker.public_ip
+    private_key = file(var.key_pairs)
+  }
+
+  tags = {
+    Name = "${terraform.workspace}-worker"
+  }
+}
+
+resource "aws_instance" "worker2" {
+  ami                         = var.worker2_ami
+  instance_type               = var.worker2_instance_type
+  availability_zone           = "us-east-1c"
+  key_name                    = var.worker2_key_name
+  subnet_id                   = module.vpc.public-1C
+  associate_public_ip_address = true
+  vpc_security_group_ids      = [module.security.security_group_id]
+
+  provisioner "local-exec" {
+    command = "echo ${aws_instance.worker2.public_ip} >> inventory"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo yum update -y"
+    ]
+  }
+
+  connection {
+    type        = "ssh"
+    user        = "ec2-user"
+    host        = aws_instance.worker2.public_ip
+    private_key = file(var.key_pairs)
+  }
+
+  tags = {
+    Name = "${terraform.workspace}-worker2"
+  }
+}
 
 //print out my instance ip address
 # resource "local_file" "inventory" {
