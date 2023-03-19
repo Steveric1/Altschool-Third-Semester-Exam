@@ -62,14 +62,14 @@ pipeline {
                         script {
                             try {
                                 sh "ssh ec2-user@54.210.230.177 kubectl create -f manifests-monitoring/00-monitoring-ns.yaml"
-                                sh "ssh ec2-user@54.210.230.177 kubectl create -f manifests-monitoring/$(ls *-prometheus-*.yaml | awk ' { print " -f " $1 } ')"
-                                sh "ssh ec2-user@54.210.230.177 kubectl create -f manifests-monitoring/$(ls *-grafana-*.yaml | awk ' { print " -f " $1 }'  | grep -v grafana-import)"
-                                sh "ssh ec2-user@54.210.230.177 kubectl create -f manifests-monitoring/23-grafana-import-dash-batch.yaml"
+                                // sh "ssh ec2-user@54.210.230.177 kubectl create -f manifests-monitoring/$(ls *-prometheus-*.yaml | awk ' { print " -f " $1 } ')"
+                                // sh "ssh ec2-user@54.210.230.177 kubectl create -f manifests-monitoring/$(ls *-grafana-*.yaml | awk ' { print " -f " $1 }'  | grep -v grafana-import)"
+                                // sh "ssh ec2-user@54.210.230.177 kubectl create -f manifests-monitoring/23-grafana-import-dash-batch.yaml"
                             } catch(error) {
                                 sh "ssh ec2-user@54.210.230.177 kubectl apply -f manifests-monitoring/00-monitoring-ns.yaml"
-                                sh "ssh ec2-user@54.210.230.177 kubectl apply -f manifests-monitoring/$(ls *-prometheus-*.yaml | awk ' { print " -f " $1 } ')"
-                                sh "ssh ec2-user@54.210.230.177 kubectl apply -f manifests-monitoring/$(ls *-grafana-*.yaml | awk ' { print " -f " $1 }'  | grep -v grafana-import)"
-                                sh "ssh ec2-user@54.210.230.177 kubectl apply -f manifests-monitoring/23-grafana-import-dash-batch.yaml"
+                                // sh "ssh ec2-user@54.210.230.177 kubectl apply -f manifests-monitoring/$(ls *-prometheus-*.yaml | awk ' { print " -f " $1 } ')"
+                                // sh "ssh ec2-user@54.210.230.177 kubectl apply -f manifests-monitoring/$(ls *-grafana-*.yaml | awk ' { print " -f " $1 }'  | grep -v grafana-import)"
+                                // sh "ssh ec2-user@54.210.230.177 kubectl apply -f manifests-monitoring/23-grafana-import-dash-batch.yaml"
                             }
                         }
                     }
