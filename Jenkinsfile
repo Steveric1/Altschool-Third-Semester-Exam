@@ -9,7 +9,7 @@ pipeline {
         stage('Nginx Deployment and mongoDB') {
             steps {
                 sshagent(['Admin1_SSH_Private_Key']){
-                    sh "scp -o strictHostKeyChecking=no deployment.yaml ubuntu@3.80.103.142:/home/ec2-user"
+                    sh "scp -o strictHostKeyChecking=no deployment.yaml ec2-user@54.210.230.177:/home/ec2-user"
                     sh "scp -o strictHostKeyChecking=no secret.yml ec2-user@54.210.230.177:/home/ec2-user"
                     sh "scp -o strictHostKeyChecking=no configMapMongodb.yml ec2-user@54.210.230.177:/home/ec2-user"
                     sh "scp -o strictHostKeyChecking=no mongo.yaml ec2-user@54.210.230.177:/home/ec2-user"
